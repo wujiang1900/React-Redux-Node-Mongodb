@@ -1,19 +1,19 @@
 import * as types from '../constants/ActionTypes';
 import Resources from '../constants/resources';
 
-export function test(link) {
+export function initRooms() {
   return dispatch => {
     Resources.request
-      .get(link)
+      .get(Resources.api.test)
       .then(response => {
-        dispatch(dispatchTest(response));
+        dispatch(dispatchInitRooms(response));
       });
   };
 }
 
-function dispatchTest(data) {
+function dispatchInitRooms(totalRooms) {
   return {
-    type: types.TEST,
-    data
+    type: types.INIT_ROOM_BOOKING,
+    totalRooms
   };
 }

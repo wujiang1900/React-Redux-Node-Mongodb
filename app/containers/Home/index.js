@@ -1,19 +1,44 @@
 import React from 'react';
-import * as actions from '../../actions/HomePage';
-import {Test} from '../../components';
-import {ContainerEnhancer} from '../../HOC';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as roomActions from '../../actions/HomePage';
+import {Room} from '../../components';
 
 class Home extends React.Component {
+  
+  componentDidMount() {
+    this.props.actions.initRooms();
+  }
+  
+  renderRooms() {
+    const {rooms} = this.props;
+    return (<div>{rooms.length}</div>)
+  }
+  
   render() {
-    const {home: {test}} = this.props;
-
+    
     return (
       <div className="home-page">
         Home Page
-        <Test/>
+        {this.renderRooms()}
       </div>
     );
   }
 }
 
-export default ContainerEnhancer(Home, actions);
+function mapStateToProps(state) {
+  // console.log(state)
+    return {
+        rooms: state.bookRooms.rooms
+    };
+}
+
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(Object.assign({}, roomActions), dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
