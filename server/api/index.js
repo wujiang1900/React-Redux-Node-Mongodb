@@ -10,4 +10,7 @@ module.exports = (app) => {
   app.post(Resources.api.test, (req, res) => {
     api.root.post.test(req, res, app.get('superSecret'));
   });
+  app.get(Resources.api.test, (req, res) => {
+    api.root.get.test(req, res, app.get('superSecret'));
+  });
 };

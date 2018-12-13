@@ -6,7 +6,11 @@ module.exports = {
 
     }
   },
-  get: {},
+  get: {
+    test(req, res, secret) {
+      res.send({total: 4});
+    }
+  },
   put: {},
   delete: {},
   options: {}
