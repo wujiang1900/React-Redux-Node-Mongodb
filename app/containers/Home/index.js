@@ -10,17 +10,27 @@ class Home extends React.Component {
   componentDidMount() {
     this.props.actions.initRooms();
   }
-  
+
   renderRooms() {
-    const {rooms} = this.props;
-    return (<div>{rooms.length}</div>)
+    // console.log(this.props.rooms)
+    const {rooms, actions} = this.props;
+    const roomsDiv = rooms.map((room, i)=>(
+          <Room roomNo={i} isSelected={room.isSelected} hideCheckBox={room.hideCheckBox} clickRoom={(e)=>actions.clickRoom(i)} key={i} />
+      ))
+    return (
+      <div className="container">
+        <div className="row">
+          {roomsDiv}
+        </div>
+      </div>
+    )
   }
   
   render() {
-    
+    if(!this.props.rooms.length) 
+      return null;
     return (
       <div className="home-page">
-        Home Page
         {this.renderRooms()}
       </div>
     );

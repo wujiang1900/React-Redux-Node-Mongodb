@@ -2,7 +2,7 @@ import * as types from '../constants/ActionTypes';
 
 const initialRoomState = {
   hideCheckBox: false,
-  isChecked: false,
+  isSelected: false,
   guests: [1, 0]
 };
 
@@ -11,25 +11,45 @@ const initialState = {
   rooms: []
 };
 
-const initApp = totalRooms=> {
-  let state = Object.assign({}, initialState);
-  
+const initRooms = totalRooms=> {
+  let rooms = new Array(totalRooms);
   for(let i=0; i<totalRooms; i++) {
-    state.rooms[i] = Object.assign({}, initialRoomState);
+    rooms[i] = Object.assign({}, initialRoomState);
     if(i===0) {
-      state.rooms[i].hideCheckBox = true;
-      state.rooms[i].isChecked = true;
+      rooms[i].hideCheckBox = true;
+      rooms[i].isSelected = true;
     }
   }
-  return state;
+  return rooms;
+}
+
+const clickRoom = (rooms, roomNo)=> {
+  const selected = rooms[roomNo].isSelected; // is the room selected or not?
+  return rooms.map((room, i)=>{
+    if(!selected && i <= roomNo) 
+      // select all the rooms before clicked room
+      room.isSelected = true;
+    else if(selected && i >= roomNo)
+      // de-select all the rooms after clicked room
+      room.isSelected = false;
+    return room;
+  });
 }
 
 export default function bookRooms(state = initialState, action) {
   switch (action.type) {
     case types.INIT_ROOM_BOOKING:
-      initApp(action.totalRooms);
-      return state;
+      return {
+        // ...state,
+        rooms: initRooms(action.totalRooms) 
+      }
 
+    case types.CLICK_ROOM:
+      return {
+        // ...state,
+        rooms: clickRoom(state.rooms, action.roomNo) 
+      }
+      
     case types.GUEST_CHANGE:
       return state;
 

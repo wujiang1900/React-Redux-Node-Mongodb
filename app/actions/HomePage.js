@@ -4,16 +4,27 @@ import Resources from '../constants/resources';
 export function initRooms() {
   return dispatch => {
     Resources.request
-      .get(Resources.api.test)
+      .get(Resources.api.roomtotal)
       .then(response => {
-        dispatch(dispatchInitRooms(response));
+        // console.log(response)
+        if(response.status === 200)
+          dispatch(dispatchInitRooms(response.data));
+        // else  dispatch error handling action
       });
-  };
+  }
 }
 
-function dispatchInitRooms(totalRooms) {
+function dispatchInitRooms({total: totalRooms}) {
   return {
     type: types.INIT_ROOM_BOOKING,
     totalRooms
-  };
+  }
+}
+
+export function clickRoom(roomNo) {
+  // console.log('roomNo'+roomNo)
+  return {
+    type: types.CLICK_ROOM,
+    roomNo
+  }
 }

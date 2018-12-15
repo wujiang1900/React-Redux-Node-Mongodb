@@ -7,10 +7,10 @@ module.exports = (app) => {
   /**
    * Test
    */
-  app.post(Resources.api.test, (req, res) => {
-    api.root.post.test(req, res, app.get('superSecret'));
+  app.post(Resources.api.roomtotal, (req, res) => {
+    api.root.post.roomtotal(req, res, app.get('superSecret'));
   });
-  app.get(Resources.api.test, (req, res) => {
-    api.root.get.test(req, res, app.get('superSecret'));
+  app.get(Resources.api.roomtotal, (req, res) => {
+    api.root.get.roomtotal(req, res, app.get('superSecret'));
   });
 };
