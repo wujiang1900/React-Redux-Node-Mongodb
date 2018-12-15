@@ -4,7 +4,7 @@ import Resources from '../constants/resources';
 export function initRooms() {
   return dispatch => {
     Resources.request
-      .get(Resources.api.roomtotal)
+      .get(Resources.api.rooms)
       .then(response => {
         // console.log(response)
         if(response.status === 200)
@@ -33,5 +33,18 @@ export function selectGuest(payload) {
   return {
     type: types.GUEST_CHANGE,
     payload
+  }
+}
+
+export function bookRooms(rooms) {
+  return dispatch => {
+    Resources.request
+      .post(Resources.api.rooms, rooms)
+      .then(response => {
+        // if successful, dispatch succss action
+        // if(response.status === 200)
+          // dispatch(bookingSuccess(response.data));
+        // else  dispatch error handling action
+      });
   }
 }

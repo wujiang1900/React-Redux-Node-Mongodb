@@ -5,12 +5,12 @@ const api = {
 
 module.exports = (app) => {
   /**
-   * Test
+   * /rooms
    */
-  app.post(Resources.api.roomtotal, (req, res) => {
-    api.root.post.roomtotal(req, res, app.get('superSecret'));
+  app.post(Resources.api.rooms, (req, res) => {
+    api.root.post.rooms(req, res, app.get('superSecret'));
   });
-  app.get(Resources.api.roomtotal, (req, res) => {
-    api.root.get.roomtotal(req, res, app.get('superSecret'));
+  app.get(Resources.api.rooms, (req, res) => {
+    api.root.get.rooms(req, res, app.get('superSecret'));
   });
 };

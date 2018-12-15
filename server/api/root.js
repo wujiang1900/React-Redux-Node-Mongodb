@@ -1,13 +1,14 @@
-let Test = require('../../models/test');
+let Rooms = require('../../models/rooms');
 
 module.exports = {
   post: {
-    roomtotal(req, res, secret) {
-
+    rooms(req, res, secret) {
+console.log(req.body)
+res.sendStatus(200);
     }
   },
   get: {
-    roomtotal(req, res, secret) {
+    rooms(req, res, secret) {
       res.send({total: 4});
     }
   },

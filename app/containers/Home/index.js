@@ -28,6 +28,7 @@ class Home extends React.Component {
         <div className="row">
           {roomsDiv}
         </div>
+        <input type="button" onClick={e=>actions.bookRooms({rooms})} value="Submit" />
       </div>
     )
   }

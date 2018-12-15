@@ -3,7 +3,7 @@ import cookie from 'react-cookie';
 
 const Resources = {
   api: {
-    roomtotal: '/api/test'
+    rooms: '/api/rooms'
   },
   cookies: {
     user: 'ReactReduxNodeMongodb_user'
