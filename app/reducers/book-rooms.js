@@ -14,7 +14,7 @@ const initialState = {
 const initRooms = totalRooms=> {
   let rooms = new Array(totalRooms);
   for(let i=0; i<totalRooms; i++) {
-    rooms[i] = Object.assign({}, initialRoomState);
+    rooms[i] = JSON.parse(JSON.stringify(initialRoomState))
     if(i===0) {
       rooms[i].hideCheckBox = true;
       rooms[i].isSelected = true;
@@ -36,6 +36,15 @@ const clickRoom = (rooms, roomNo)=> {
   });
 }
 
+const guestChange = (rooms, {roomNo, type, guestNo})=> {
+  // console.log('roomNo'+roomNo )
+   return rooms.map((room, i)=>{
+    if(i === roomNo) 
+      room.guests[type] = guestNo;
+    return room;
+  });
+}
+
 export default function bookRooms(state = initialState, action) {
   switch (action.type) {
     case types.INIT_ROOM_BOOKING:
@@ -46,12 +55,13 @@ export default function bookRooms(state = initialState, action) {
 
     case types.CLICK_ROOM:
       return {
-        // ...state,
         rooms: clickRoom(state.rooms, action.roomNo) 
       }
       
     case types.GUEST_CHANGE:
-      return state;
+      return {
+        rooms: guestChange(state.rooms, action.payload) 
+      }
 
     default:
       return state;

@@ -15,7 +15,13 @@ class Home extends React.Component {
     // console.log(this.props.rooms)
     const {rooms, actions} = this.props;
     const roomsDiv = rooms.map((room, i)=>(
-          <Room roomNo={i} isSelected={room.isSelected} hideCheckBox={room.hideCheckBox} clickRoom={(e)=>actions.clickRoom(i)} key={i} />
+          <Room roomNo={i} 
+          room={room} 
+          clickRoom={(e)=>actions.clickRoom(i)} 
+          selectGuest={(e, type)=>
+                  actions.selectGuest({'roomNo': i, 'type': type, 'guestNo': e.target.value})
+                }
+          key={i} />
       ))
     return (
       <div className="container">

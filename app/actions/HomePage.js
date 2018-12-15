@@ -22,9 +22,16 @@ function dispatchInitRooms({total: totalRooms}) {
 }
 
 export function clickRoom(roomNo) {
-  // console.log('roomNo'+roomNo)
   return {
     type: types.CLICK_ROOM,
     roomNo
+  }
+}
+
+export function selectGuest(payload) {
+  // console.log('payload'+payload )
+  return {
+    type: types.GUEST_CHANGE,
+    payload
   }
 }
