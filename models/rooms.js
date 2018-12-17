@@ -1,14 +1,16 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-let RoomSchema = new mongoose.Schema({
+const roomSchema =  Schema({
   hideCheckBox: {type: Boolean, required: true},
   isSelected: {type: Boolean, required: true},
   guests: [Number]
 });
 
-let RoomsSchema = new mongoose.Schema({
-  total: {type: Number, required: true},
-  rooms: [RoomSchema]
+let roomsSchema =  Schema({
+  total: {type: Number, default: 4, required: true},
+  rooms: [roomSchema]
 });
 
-module.exports = mongoose.model('Rooms', RoomsSchema);
+const Room = mongoose.model('Room', roomSchema);
+module.exports = mongoose.model('Rooms', roomsSchema);

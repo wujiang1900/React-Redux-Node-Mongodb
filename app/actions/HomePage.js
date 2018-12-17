@@ -6,20 +6,18 @@ export function initRooms() {
     Resources.request
       .get(Resources.api.rooms)
       .then(response => {
-        // console.log(response)
+        console.log(response)
         if(response.status === 200)
-          dispatch(dispatchInitRooms(response.data));
+          dispatch(initBooking(response.data));
         // else  dispatch error handling action
       });
   }
 }
 
-function dispatchInitRooms({total: totalRooms}) {
-  return {
-    type: types.INIT_ROOM_BOOKING,
-    totalRooms
-  }
-}
+const initBooking = (data)=> ({
+  type: types.INIT_ROOM_BOOKING,
+  data
+})
 
 export function clickRoom(roomNo) {
   return {
@@ -36,15 +34,19 @@ export function selectGuest(payload) {
   }
 }
 
-export function bookRooms(rooms) {
+export function bookRooms(rooms, roomsDbId) {
   return dispatch => {
     Resources.request
-      .post(Resources.api.rooms, rooms)
+      .post(Resources.api.rooms, {id: roomsDbId, rooms})
       .then(response => {
-        // if successful, dispatch succss action
-        // if(response.status === 200)
-          // dispatch(bookingSuccess(response.data));
+        if(!roomsDbId && response.status === 200)
+          dispatch(updateRoomsDbId(response.data._id));
         // else  dispatch error handling action
       });
   }
 }
+
+const updateRoomsDbId = (id)=> ({
+  type: types.UPDATE_ROOMS_DB_ID,
+  id
+})

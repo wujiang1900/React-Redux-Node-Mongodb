@@ -8,6 +8,7 @@ const initialRoomState = {
 
 
 const initialState = {
+  roomsDbId: null,
   rooms: []
 };
 
@@ -48,19 +49,32 @@ const guestChange = (rooms, {roomNo, type, guestNo})=> {
 export default function bookRooms(state = initialState, action) {
   switch (action.type) {
     case types.INIT_ROOM_BOOKING:
+      let roomsDbId = action.data._id;
+      let rooms = action.data.rooms;
+      if(!roomsDbId) {
+        rooms = initRooms(action.data.total);
+      }
       return {
         // ...state,
-        rooms: initRooms(action.totalRooms) 
+        roomsDbId: roomsDbId,
+        rooms: rooms
       }
 
     case types.CLICK_ROOM:
       return {
+        roomsDbId: state.roomsDbId,
         rooms: clickRoom(state.rooms, action.roomNo) 
       }
       
     case types.GUEST_CHANGE:
       return {
+        roomsDbId: state.roomsDbId,
         rooms: guestChange(state.rooms, action.payload) 
+      }
+    case types.UPDATE_ROOMS_DB_ID:
+      return {
+        roomsDbId: action.id,
+        rooms: state.rooms 
       }
 
     default:

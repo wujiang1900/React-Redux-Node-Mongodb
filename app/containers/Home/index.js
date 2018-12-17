@@ -13,7 +13,7 @@ class Home extends React.Component {
 
   renderRooms() {
     // console.log(this.props.rooms)
-    const {rooms, actions} = this.props;
+    const {rooms, roomsDbId, actions} = this.props;
     const roomsDiv = rooms.map((room, i)=>(
           <Room roomNo={i} 
           room={room} 
@@ -28,7 +28,7 @@ class Home extends React.Component {
         <div className="row">
           {roomsDiv}
         </div>
-        <input type="button" onClick={e=>actions.bookRooms({rooms})} value="Submit" />
+        <input type="button" onClick={e=>actions.bookRooms(rooms, roomsDbId)} value="Submit" />
       </div>
     )
   }

@@ -22,24 +22,24 @@ class Room extends React.Component {
         </div>
         <div className={bodyClass}>
           {this.renderLabels()}
-          {this.renderDropDown(0, selectGuest)}
+          {this.renderDropDown(0, selectGuest, guests, isSelected)}
           <span className="mx-4">
-          {this.renderDropDown(1, selectGuest)}
+          {this.renderDropDown(1, selectGuest, guests, isSelected)}
           </span>
         </div>
       </div>
     );
   }
   
-  renderDropDown(type, selectGuest) {
+  renderDropDown(type, selectGuest, guests, isSelected) {
     return (
-      <select onChange={(e)=>selectGuest(e, type)}>
-       {this.renderOptions(type)}
+      <select disabled={!isSelected} onChange={(e)=>selectGuest(e, type)}>
+       {this.renderOptions(type, guests)}
       </select>
       )
   }
   
-  renderOptions(type) {
+  renderOptions(type, guests) {
     let min, max;
     if(type===0) {
       min = Constants.minAdult;
@@ -49,9 +49,10 @@ class Room extends React.Component {
       min = Constants.minChild;
       max = Constants.maxChild;
     }
+    const selectGuest=guests[type];
     let options=[];
     for(let i=min; i<=max; i++)
-      options.push( <option value={i} key={i}>{i}</option>)
+      options.push( <option value={i} selected={selectGuest==i} key={i}>{i}</option>)
     return options;
   }
   
