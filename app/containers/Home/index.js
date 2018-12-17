@@ -11,9 +11,7 @@ class Home extends React.Component {
     this.props.actions.initRooms();
   }
 
-  renderRooms() {
-    // console.log(this.props.rooms)
-    const {rooms, roomsDbId, actions} = this.props;
+  renderRooms(rooms, actions) {
     const roomsDiv = rooms.map((room, i)=>(
           <Room roomNo={i} 
           room={room} 
@@ -28,7 +26,6 @@ class Home extends React.Component {
         <div className="row">
           {roomsDiv}
         </div>
-        <input type="button" onClick={e=>actions.bookRooms(rooms, roomsDbId)} value="Submit" />
       </div>
     )
   }
@@ -36,9 +33,11 @@ class Home extends React.Component {
   render() {
     if(!this.props.rooms.length) 
       return null;
+    const {rooms, roomsDbId, actions} = this.props;
     return (
-      <div className="home-page">
-        {this.renderRooms()}
+      <div>
+        {this.renderRooms(rooms, actions)}
+        <input type="button" onClick={e=>actions.bookRooms(rooms, roomsDbId)} value="Submit" className="ml-5 mt-3 bg-litegrey" />
       </div>
     );
   }

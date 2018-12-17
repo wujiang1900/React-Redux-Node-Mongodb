@@ -32,8 +32,9 @@ class Room extends React.Component {
   }
   
   renderDropDown(type, selectGuest, guests, isSelected) {
+    // debugger
     return (
-      <select disabled={!isSelected} defaultValue={guests[type]} onChange={(e)=>selectGuest(e, type)}>
+      <select disabled={!isSelected} value={guests[type]} onChange={(e)=>selectGuest(e, type)}>
        {this.renderOptions(type)}
       </select>
       )

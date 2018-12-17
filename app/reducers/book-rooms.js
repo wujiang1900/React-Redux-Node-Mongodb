@@ -1,9 +1,10 @@
 import * as types from '../constants/ActionTypes';
+import * as Constants from '../constants/constants.json'
 
 const initialRoomState = {
   hideCheckBox: false,
   isSelected: false,
-  guests: [1, 0]
+  guests: [Constants.minAdult, Constants.minChild]
 };
 
 
@@ -30,9 +31,11 @@ const clickRoom = (rooms, roomNo)=> {
     if(!selected && i <= roomNo) 
       // select all the rooms before clicked room
       room.isSelected = true;
-    else if(selected && i >= roomNo)
+    else if(selected && i >= roomNo) {
       // de-select all the rooms after clicked room
       room.isSelected = false;
+      room.guests = [Constants.minAdult, Constants.minChild];
+    }
     return room;
   });
 }
