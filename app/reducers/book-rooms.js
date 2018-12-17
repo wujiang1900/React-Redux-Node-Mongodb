@@ -38,7 +38,6 @@ const clickRoom = (rooms, roomNo)=> {
 }
 
 const guestChange = (rooms, {roomNo, type, guestNo})=> {
-  // console.log('roomNo'+roomNo )
    return rooms.map((room, i)=>{
     if(i === roomNo) 
       room.guests[type] = guestNo;

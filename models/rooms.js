@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const roomSchema =  Schema({
-  hideCheckBox: {type: Boolean, required: true},
-  isSelected: {type: Boolean, required: true},
+  hideCheckBox: {type: Boolean},
+  isSelected: {type: Boolean},
   guests: [Number]
 });
 

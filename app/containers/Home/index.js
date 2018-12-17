@@ -47,7 +47,8 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   // console.log(state)
     return {
-        rooms: state.bookRooms.rooms
+        rooms: state.bookRooms.rooms,
+        roomsDbId: state.bookRooms.roomsDbId
     };
 }
 

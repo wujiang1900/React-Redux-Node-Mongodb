@@ -17,7 +17,7 @@ class Room extends React.Component {
     return (
       <div className="mt-4 mr-2 rounded border">
         <div className={headerClass}>
-          {!hideCheckBox && <input type="checkbox" className="mr-1" checked={isSelected} onClick={clickRoom} />}
+          {!hideCheckBox && <input type="checkbox" className="mr-1" checked={isSelected} onChange={clickRoom} />}
           <span className="">Room {roomNo+1}</span>
         </div>
         <div className={bodyClass}>
@@ -33,13 +33,13 @@ class Room extends React.Component {
   
   renderDropDown(type, selectGuest, guests, isSelected) {
     return (
-      <select disabled={!isSelected} onChange={(e)=>selectGuest(e, type)}>
-       {this.renderOptions(type, guests)}
+      <select disabled={!isSelected} defaultValue={guests[type]} onChange={(e)=>selectGuest(e, type)}>
+       {this.renderOptions(type)}
       </select>
       )
   }
   
-  renderOptions(type, guests) {
+  renderOptions(type) {
     let min, max;
     if(type===0) {
       min = Constants.minAdult;
@@ -49,10 +49,9 @@ class Room extends React.Component {
       min = Constants.minChild;
       max = Constants.maxChild;
     }
-    const selectGuest=guests[type];
     let options=[];
     for(let i=min; i<=max; i++)
-      options.push( <option value={i} selected={selectGuest==i} key={i}>{i}</option>)
+      options.push( <option value={i} key={i}>{i}</option>)
     return options;
   }
   
