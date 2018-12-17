@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as roomActions from '../../actions/HomePage';
+import * as roomActions from '../../actions/Room';
 import {Room} from '../../components';
 
 class Home extends React.Component {
