@@ -64,7 +64,7 @@ The point of this is to show awareness towards:
 
 
 Description:
-Using the screenshot test2-dynamic-form.png as a guide, create a web page that behaves in the following specified manner.
+Using the screenshot ./test2-dynamic-form.png as a guide, create a web page that behaves in the following specified manner.
 
 1.
 By default, the 'Adult' and 'Children' drop-down fields for rooms 2, 3, and 4 should be disabled.  Upon checking the checkbox of room 2, the drop-down fields associated with room 2 should be enabled.  
