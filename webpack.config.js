@@ -36,7 +36,7 @@ module.exports = {
       test: /\.js$/,
       loader: 'babel-loader',
       query: {
-        presets: ['react']
+        presets: ['@babel/react']
       }
     }, {
       test: /\.scss$/,
