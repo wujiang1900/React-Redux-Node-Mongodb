@@ -7,10 +7,7 @@ import * as reducers from '../reducers';
 
 const combinedReducers = combineReducers(reducers);
 const reducer = HOCReducer(combinedReducers);
-const middleware = compose (
-            applyMiddleware(thunk), 
-            applyMiddleware(promiseMiddleware(), logger)
-        );
+const middleware = applyMiddleware(thunk, promiseMiddleware(), logger);
 
 const store = createStore(reducer, middleware);
 

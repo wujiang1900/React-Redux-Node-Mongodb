@@ -1,16 +1,18 @@
+import 'babel-polyfill';
 import * as types from '../constants/ActionTypes';
 import Resources from '../constants/resources';
 
 export function initRooms() {
-  return dispatch => {
-    Resources.request
-      .get(Resources.api.rooms)
-      .then(response => {
-        console.log(response)
-        if(response.status === 200)
-          dispatch(initBooking(response.data));
-        // else  dispatch error handling action
-      });
+  return async dispatch => {
+  try {
+      const successResponse = 
+        await Resources.request.get(Resources.api.rooms);
+        dispatch(initBooking(successResponse.data));
+
+      return successResponse;
+    } catch (error) {
+      // dispatch error handling action
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 import axios from 'axios';
-import store from './store';
+import store from '../store';
 
 // configure base url
 const instance = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://localhost:8080',
 });
 
 // intercept requests and add authorization token
