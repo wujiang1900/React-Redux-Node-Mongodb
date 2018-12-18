@@ -27,7 +27,6 @@ export function clickRoom(roomNo) {
 }
 
 export function selectGuest(payload) {
-  // console.log('payload'+payload )
   return {
     type: types.GUEST_CHANGE,
     payload

@@ -1,15 +1,16 @@
-import * as actions from '../room'
-import * as types from '../../constants/ActionTypes'
+import * as actions from './Room'
+import * as types from '../constants/ActionTypes'
 
 describe('actions', () => {
 
     it('should create an action to handle room checkbox click event', () => {
-
-        const i="3"
+        const i=2
         const expectedAction = {
             type: types.CLICK_ROOM,
-            i,
-            }
-        expect(actions.toggleAssertion(i)).toEqual(expectedAction)
+            roomNo: i
+          }
+        expect(actions.clickRoom(i)).to.deep.equal(expectedAction)
     })
+    
+    
 })
