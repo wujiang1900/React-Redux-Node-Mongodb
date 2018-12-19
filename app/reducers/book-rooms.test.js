@@ -19,8 +19,8 @@ describe('bookrooms reducer', () => {
                roomsDbId: null,
                rooms: []
             }, {
-                type: types.INIT_ROOM_BOOKING,
-                data: {total: 4}
+                type: types.INIT_ROOM_BOOKING+'_FULFILLED',
+                payload: {data: {total: 4}}
             })
         ).to.deep.equal(
             {
@@ -104,10 +104,12 @@ describe('bookrooms reducer', () => {
                roomsDbId: null,
                rooms: []
             }, {
-                type: types.INIT_ROOM_BOOKING,
-                data: {total: 4, 
+                type: types.INIT_ROOM_BOOKING+'_FULFILLED',
+                payload: {data: 
+                  {total: 4, 
                     _id: dummyid, 
                     rooms: rooms
+                  }
                 }
             })
         ).to.deep.equal(

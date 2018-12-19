@@ -50,11 +50,12 @@ const guestChange = (rooms, {roomNo, type, guestNo})=> {
 
 export default function bookRooms(state = initialState, action) {
   switch (action.type) {
-    case types.INIT_ROOM_BOOKING:
-      let roomsDbId = action.data._id;
-      let rooms = action.data.rooms;
+    case types.INIT_ROOM_BOOKING+'_FULFILLED':
+      const data = action.payload.data;
+      let roomsDbId = data._id;
+      let rooms = data.rooms;
       if(!roomsDbId) {
-        rooms = initRooms(action.data.total);
+        rooms = initRooms(data.total);
       }
       return {
         // ...state,

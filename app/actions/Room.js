@@ -1,24 +1,10 @@
-import 'babel-polyfill';
 import * as types from '../constants/ActionTypes';
 import Resources from '../constants/resources';
+import instance from '../config/axiosconfig';
 
-export function initRooms() {
-  return async dispatch => {
-  try {
-      const successResponse = 
-        await Resources.request.get(Resources.api.rooms);
-        dispatch(initBooking(successResponse.data));
-
-      return successResponse;
-    } catch (error) {
-      // dispatch error handling action
-    }
-  }
-}
-
-const initBooking = (data)=> ({
+export const initRooms = ()=> ({
   type: types.INIT_ROOM_BOOKING,
-  data
+  payload: Resources.request.get(Resources.api.rooms)
 })
 
 export function clickRoom(roomNo) {

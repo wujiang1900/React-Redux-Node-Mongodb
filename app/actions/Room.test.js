@@ -43,7 +43,7 @@ describe('actions', () => {
             
             const expectedActions = [types.INIT_ROOM_BOOKING];
             // configure Mock store
-            const store = mockStore({});
+            const store = mockStore({auth: {}});
             
             // call the async action creator
             return store.dispatch(actions.initRooms()).then(() => {
