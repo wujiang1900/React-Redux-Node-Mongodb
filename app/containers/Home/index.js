@@ -22,11 +22,9 @@ class Home extends React.Component {
           key={i} />
       ))
     return (
-      <div className="container">
         <div className="row">
           {roomsDiv}
         </div>
-      </div>
     )
   }
   
@@ -35,9 +33,11 @@ class Home extends React.Component {
       return null;
     const {rooms, roomsDbId, actions} = this.props;
     return (
-      <div>
+      <div className="container">
         {this.renderRooms(rooms, actions)}
-        <input type="button" onClick={e=>actions.bookRooms(rooms, roomsDbId)} value="Submit" className="ml-5 mt-3 bg-litegrey" />
+        <div className="row">
+          <input type="button" onClick={e=>actions.bookRooms(rooms, roomsDbId)} value="Submit" className="mt-3 bg-litegrey" />
+        </div>
       </div>
     );
   }
