@@ -5,7 +5,6 @@ import configureMockStore from 'redux-mock-store';
 import promiseMiddleware from 'redux-promise-middleware';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
-import instance from '../config/axiosconfig';
 
 describe('actions', () => {
 
@@ -23,13 +22,13 @@ describe('actions', () => {
       const mockStore = configureMockStore(middlewares);
     
       beforeEach(() => {
-        moxios.install(instance);
+        moxios.install();
       });
       afterEach(() => {
-        moxios.uninstall(instance);
+        moxios.uninstall();
       });
 
-        xit('should handle initRooms()', () => {
+        it('should handle initRooms()', () => {
             const payload = {
               data: [] 
             };
@@ -41,9 +40,9 @@ describe('actions', () => {
               });
             });
             
-            const expectedActions = [types.INIT_ROOM_BOOKING];
+            const expectedActions = [types.INIT_ROOM_BOOKING+'_PENDING', types.INIT_ROOM_BOOKING+'_FULFILLED'];
             // configure Mock store
-            const store = mockStore({auth: {}});
+            const store = mockStore({});
             
             // call the async action creator
             return store.dispatch(actions.initRooms()).then(() => {
