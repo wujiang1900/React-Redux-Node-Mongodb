@@ -1,6 +1,5 @@
 import * as types from '../constants/ActionTypes';
 import Resources from '../constants/resources';
-import instance from '../config/axiosconfig';
 
 export const initRooms = ()=> ({
   type: types.INIT_ROOM_BOOKING,
@@ -33,7 +32,7 @@ export function bookRooms(rooms, roomsDbId) {
   }
 }
 
-const updateRoomsDbId = (id)=> ({
+export const updateRoomsDbId = (id)=> ({
   type: types.UPDATE_ROOMS_DB_ID,
   id
 })

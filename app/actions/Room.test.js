@@ -16,6 +16,24 @@ describe('actions', () => {
           }
         expect(actions.clickRoom(i)).to.deep.equal(expectedAction)
     })
+
+    it('should create an action to handle guests dropdown change event', () => {
+        const payload={}
+        const expectedAction = {
+            type: types.GUEST_CHANGE,
+            payload
+          }
+        expect(actions.selectGuest(payload)).to.deep.equal(expectedAction)
+    })
+   
+    it('should create an action to handle guests dropdown change event', () => {
+        const id = '132323'
+        const expectedAction = {
+            type: types.UPDATE_ROOMS_DB_ID,
+            id
+          }
+        expect(actions.updateRoomsDbId(id)).to.deep.equal(expectedAction)
+    })
     
     describe('async actions', () => {
       const middlewares =  [thunk, promiseMiddleware()];
@@ -51,8 +69,8 @@ describe('actions', () => {
               const actionTypes = dispatchedActions.map(action => action.type);
               
               expect(actionTypes).to.deep.equal(expectedActions);
-                },
-            );
+            },
+        );
       });
     });
 });
