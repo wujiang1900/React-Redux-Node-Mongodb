@@ -23,7 +23,8 @@
 6. npm start
 7. visit [localhost:3000](http://localhost:3000) and see how app is running.
 8. npm run test (to run unit tests)
-9. call/text 469-888-0844 or email wujiang1900@yahoo.com if you have any questions.
+9. visit [localhost:3000/hilton.html](http://localhost:3000/hilton.html) for static site for Assessment 1.
+10. call/text 469-888-0844 or email wujiang1900@yahoo.com if you have any questions.
 
 ### Installment
 
@@ -86,3 +87,16 @@ If a user unchecks a room, that room plus any room after that room should return
 
 6.
 Upon clicking 'Submit', save values, so that upon reload, all previously selected values are pre-populated.
+
+Assessment 1:
+--------------
+Expected final output:
+HTML/CSS/JS/supporting images.
+
+Description:
+A hotel details web page is going to be served to mobile phone web users.  A screenshot is provided of what it should look like (test1-mobile-page.png).  Create a static web page from scratch that matches the screenshot, with some responsiveness for varying phone screen sizes.  (The footer is not illustrated - feel free to cut off however you feel appropriate).  Supporting images for this test can be found in /test1_assets/ directory.
+
+The point of this is to show awareness towards:
+- Design detail
+- Semantic HTML 
+- CSS/responsive design
